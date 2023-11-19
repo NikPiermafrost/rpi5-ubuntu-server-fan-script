@@ -2,7 +2,9 @@
 
 temp=$(/usr/bin/vcgencmd measure_temp | egrep -o '[0-9]*\.[0-9]*')
 
-if (( $(echo "$temp < 60" | bc -l) )); then
+if (( $(echo "$temp < 55" | bc -l) )); then
+    temp=0
+elif (( $(echo "$temp < 60" | bc -l) )); then
     temp=1
 elif (( $(echo "$temp < 68" | bc -l) )); then
     temp=2
